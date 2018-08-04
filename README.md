@@ -35,3 +35,6 @@ Para fazer (2):
    [http://localhost:3000](http://localhost:3000) e você verá "Hello from` server.js`!"
 7. Agora você pode explorar as outras rotas e comportamentos detalhados em [`server.js`](https://github.com/rbarros/Arduino-J5/blob/master/server.js)
 
+# Créditos
+
+[DGMD E-15 & S-15](DGMD E-15 & S-15)
