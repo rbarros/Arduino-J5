@@ -16,8 +16,8 @@ Para executar este projeto, precisamos fazer duas coisas:
 Para fazer (1):
 
 1. Baixe e instale o [Arduino IDE](https://www.arduino.cc/en/Main/Software) 
-2. Abra o Arduino IDE e abra o exemplo do `StandardFermata` indo em `Arquivo> Exemplos> Fermata> StandardFermata`
-3. Faça o upload do exemplo `StandardFermata` selecionando `Sketch> Upload`
+2. Abra o Arduino IDE e abra o exemplo do `StandardFirmata` indo em `Arquivo> Exemplos> Firmata> StandardFirmata`
+3. Faça o upload do exemplo `StandardFirmata` selecionando `Sketch> Upload/Carregar`
    
 ---
 
@@ -37,4 +37,4 @@ Para fazer (2):
 
 # Créditos
 
-[DGMD E-15 & S-15](DGMD E-15 & S-15)
+[`DGMD E-15 & S-15`](https://github.com/dgmd)
