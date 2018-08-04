@@ -10,11 +10,15 @@ board.on("ready", function() { // Once the computer is connected to the Arduino
     var app = express(); // And start up that server
 
     app.get('/', function(req, res) { // what happens when we go to `/`
+        console.log('Hello from `server.js`!');
         res.send("Hello from `server.js`!"); // Just send some text
     });
 
-    app.get('/hello', function(req, res) { // what ha1ppens when we go to `/hello`
-        res.sendFile('hello.html', { root: '.' }); // Send back the file `hello.html` located in the current directory (`root`)
+    app.use("/public", express.static(__dirname + "/public"));
+
+    app.get('/dashboard', function(req, res) { // what ha1ppens when we go to `/dashboard`
+        console.log('dashboard.html');
+        res.sendFile('dashboard.html', { root: '.' }); // Send back the file `dashboard.html` located in the current directory (`root`)
     });
 
     app.get('/:pin/state', function(req, res) { // what happens when someone goes to `/#/state`, where # is any number

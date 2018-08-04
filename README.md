@@ -1,54 +1,37 @@
-# README
+# Arduino-J5
+Arduino com Johnny-Five com Node.js + Express
 
-This is a small, sample project demonstrating how to use [`johnny-five`](http://johnny-five.io/) (a [Node](https://nodejs.org/en/) library which lets you talk to many microcontoller platforms—including the [Arduino](https://www.arduino.cc/) and [Tessel](https://tessel.io/)—_via_ JavaScript) in conjunction with [`express`](http://expressjs.com/) (another Node library which lets you write a simple web server with JavaScript) to use the Arduino as a web server.
+Este é um pequeno projeto de exemplo que demonstra como usar o [johnny-five](http://johnny-five.io/) 
+(uma biblioteca [Node](https://nodejs.org/en/) que permite você programar em muitas
+plataformas - incluindo o [Arduino](https://www.arduino.cc/) e [Tessel](https://tessel.io/) - _via_ JavaScript) 
+em conjunto com [express](http://expressjs.com/) (outra biblioteca do Node que permite escrever um servidor web simples com JavaScript) para usar o Arduino como um servidor web.
 
-To run this project, we need to do two things:
+Para executar este projeto, precisamos fazer duas coisas:
 
-1. Teach the Arduino how to receive communications from our computer for the `johnny-five` library.
-2. And install the required libraries and run the code for this sample project.
-
----
-
-To do (1):
-
-1. Download and install [the Arduino IDE](https://www.arduino.cc/en/Main/Software) (integrated development environment—kind of like a [Sublime Text](https://www.sublimetext.com/) which can talk to the Arduino)
-2. Open the Arduino IDE, and open the `StandardFermata` example by going to `File > Examples > Fermata > StandardFermata`
-3. Upload the `StandardFermata` sketch by selecting `Sketch > Upload`
+1. Ensine ao Arduino como receber comunicações do nosso computador pela biblioteca `johnny-five`.
+2. E instale as bibliotecas necessárias e execute o código para este projeto de exemplo.
 
 ---
 
-To do (2):
+Para fazer (1):
 
-1. Clone this repository _via_ [GitHub Desktop](`github-mac://openRepo/https://github.com/dgmd/johnny-five-express-sample`) or from the command line (`git clone git@github.com:dgmd/johnny-five-express-sample.git`).
-2. Open the cloned repository in your terminal.
-3. Within the repository, run `npm install` in your terminal.  This uses [`npm`](https://www.npmjs.com/)—Node's package manager—to install the libraries required for this project (`express` and `johnny-five`) by looking within the `package.json` file.
-3. Connect your Arduino to your computer _via_ USB.
-4. In your terminal (which should still be within the cloned repository), run `node server.js`
-5. You should see `Server's up at http://localhost:3000!`; when you do, go to [http://localhost:3000](http://localhost:3000) and you should see "Hello from `server.js`!"
-6. Now you can explore the other routes and behavior detailed in [`server.js`](https://github.com/dgmd/johnny-five-express-sample/blob/master/server.js)
+1. Baixe e instale o [Arduino IDE](https://www.arduino.cc/en/Main/Software) 
+2. Abra o Arduino IDE e abra o exemplo do `StandardFermata` indo em `Arquivo> Exemplos> Fermata> StandardFermata`
+3. Faça o upload do exemplo `StandardFermata` selecionando `Sketch> Upload`
+   
+---
 
-## Suggested Explorations
+Para fazer (2):
 
-Here are a few ways to play around with and explore the syntax and setup of using Express and the Arduino which might be interesting and useful to you if you're planning to build a project with a physical, web-connected component.
+1. Clonar este repositório _via_ [GitHub](https://github.com/rbarros/Arduino-J5.git) ou a partir da linha de comando 
+   (`git clone https://github.com/rbarros/Arduino-J5.git`).
+2. Abra o repositório clonado no seu terminal.
+3. Dentro do repositório, execute `npm install` no seu terminal. Isso usa [`npm`](https://www.npmjs.com/) - 
+   gerenciador de pacotes - para instalar as bibliotecas necessárias para este projeto (`express` e `johnny-five`) 
+   olhando dentro do arquivo package.json.
+4. Conecte seu Arduino ao seu computador _via_ USB.
+5. No seu terminal (que ainda deve estar dentro do repositório clonado), execute `node server.js`
+6. Você deve ver o `Servidor em http://localhost:3000!`; quando você fizer isso, vá para 
+   [http://localhost:3000](http://localhost:3000) e você verá "Hello from` server.js`!"
+7. Agora você pode explorar as outras rotas e comportamentos detalhados em [`server.js`](https://github.com/rbarros/Arduino-J5/blob/master/server.js)
 
-### Exploration 1 — Add a route of your own
-
-Get comfortable with the syntax for [adding routes with Express](http://expressjs.com/en/starter/basic-routing.html) and add your own which either returns a particular string, or perhaps serves up a different web from a file.
-
-### Exploration 2 — Add a route which returns something depending on a URL parameter
-
-You can use the [`req.params` object](http://expressjs.com/en/api.html#req.params) to access parameters passed in a URL—_e.g._ If someone goes to `/hello/world` and then `/goodbye/world`, you can write a route whose returned content depends on `hello` _v._ `goodbye`.
-
-### Exploration 3 — Add a route which returns something depending on the state of an individual pin
-
-You can query the state of an individual pin using [`johnny-five`'s Pin API](https://github.com/rwaldron/johnny-five/wiki/Pin#api).  Just as you can write a route which returns something different depending on the URL you go to, you can also write a route which returns something different depending on the state of an individual pin.
-
-### Exploration 4 — Add a route which serves a web page which regularly queries the state of a pin and changes something on the web page depending on that pin
-
-The first three explorations are all a single interaction—a user goes to a URL and Express serves up a page after looking at the URL and/or the Arduino's pins.  But you can also create a web page which itself regularly queries the server using [`XMLHTTPRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest).  In this exploration, try to create a web page which is served up at a particular URL, but which when it loads, regularly queries (in JavaScript, _via_ XMLHTTPRequest) a _different_ URL (say, one which is measuring the state of a pin) and modifies the content of the page accordingly…_e.g._ You could have a web page where the `background-color` of a `div` changes when a particular pin is set low (say, by a switch).
-
-### Exploration 5 — Add a route which serves a web page which uses WebSockets to update the page in real time depending on the state of a pin
-
-In [Exploration 4](#exploration-4-add-a-route-which-serves-a-web-page-which-regularly-queries-the-state-of-a-pin-and-changes-something-on-the-web-page-depending-on-that-pin), the web page is regularly asking the Arduino about the state of a pin.  This is called [polling](https://en.wikipedia.org/wiki/Polling_(computer_science)).  Ideally, our system could update itself only when something changes on the Arduino.  To do that, we need easy, constant, two-way communication between our server and our web page.  This is why the [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) technology was introduced.  [Socket.io](http://socket.io/) is a convenient wrapper around the WebSockets protocol that makes talking WebSockets pretty simple.
-
-In this exploration, try to recreate the results from Exploration 4, but this time using WebSocket's event-driven approach, instead.
